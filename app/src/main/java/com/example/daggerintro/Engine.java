@@ -2,10 +2,10 @@ package com.example.daggerintro;
 
 import javax.inject.Inject;
 
-public class Engine {
 
-    @Inject
-    public Engine(){
+//Now Engine is an interface and not a class
 
-    }
+public interface Engine {
+
+    void start();
 }
