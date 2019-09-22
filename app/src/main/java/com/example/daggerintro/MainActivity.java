@@ -21,10 +21,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         //Also if we create one more component then it will have different instance of Driver,So singeleton is only in one
         //Component,For Global Singeleton we will see
-        ActivityComponent component = DaggerActivityComponent.builder().horsePower(1500).engineCapacity(1500)
+
+        //This won't work now bcz ActivityComponent is a Subcomponent,so we will have to access it using it's parent Component
+        /*ActivityComponent component = DaggerActivityComponent.builder().horsePower(1500).engineCapacity(1500)
                 .appComponent(((ExampleApplication) getApplication()).getAppComponent()).build();
+
+         */
+
+
+        ActivityComponent component = ((ExampleApplication)getApplication()).getAppComponent().
+                getActivityComponent(new DisealEngineModule(150));  //No need to call Build now
 
         component.inject(MainActivity.this);
         //We can't do constructor injection here bcz we don't create MainInjection

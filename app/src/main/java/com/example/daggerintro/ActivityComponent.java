@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Subcomponent;
 
 //@Component
 
@@ -18,8 +19,11 @@ import dagger.Component;
 
 
 
+//Now we will convert this Component to Subcomponent,then it will be able to access all the dependency graph of
+//Parent Component without Exposing them Explictly in Parent Component
+
 @PerActivity
-@Component(dependencies = {AppComponent.class},modules = {WheelsModule.class,PetrolEngineModule.class})
+@Subcomponent(modules = {WheelsModule.class,DisealEngineModule.class})
 public interface ActivityComponent {
 
 
@@ -28,19 +32,4 @@ public interface ActivityComponent {
     //We can't pass superclass here,So if we have something like BaseActivity ,that won't work
     void inject(MainActivity mainActivity);
 
-
-    @Component.Builder
-    interface Builder{
-
-        @BindsInstance
-        Builder horsePower(@Named("horse power") int horsePower);
-
-        @BindsInstance
-        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
-
-        Builder appComponent(AppComponent appComponent);
-
-        ActivityComponent build();
-
-    }
 }
