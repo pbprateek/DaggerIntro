@@ -10,14 +10,16 @@ public class Car {
 
 
     private Wheels wheels;
+    private Driver driver;
     @Inject Engine engine; //Field injection but no need of any component
 
 
 //Now dagger knows how to Construct a car but for this to work it should also know the same abt Engine and Wheels
 
     @Inject
-    public Car(Wheels wheels){
+    public Car(Wheels wheels,Driver driver){
         this.wheels = wheels;
+        this.driver = driver;
     }
 
 
@@ -36,6 +38,6 @@ public class Car {
 
     public void drive(){
         engine.start();
-        Log.d(TAG, "driving...");
+        Log.d(TAG, driver+" driving car "+this);
     }
 }

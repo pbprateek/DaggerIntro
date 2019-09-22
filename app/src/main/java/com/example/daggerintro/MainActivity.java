@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //Also if we create one more component then it will have different instance of Driver,So singeleton is only in one
+        //Component,For Global Singeleton we will see
         CarComponent component = DaggerCarComponent.builder().horsePower(1500).engineCapacity(1500).build();
 
         component.inject(MainActivity.this);

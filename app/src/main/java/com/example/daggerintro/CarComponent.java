@@ -6,19 +6,26 @@ package com.example.daggerintro;
 
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
 //@Component
 
+//We also will have to annotate the Componenet with Singeleton,Even if one Class in the Component is Singeleton
+//We can also put Singelton Directly above @Bind or @Provides
+
+
+
+@Singleton
 @Component(modules = {WheelsModule.class,PetrolEngineModule.class})
 public interface CarComponent {
 
+
     Car getCar();
 
-
-    //We can't pass superclass here
+    //We can't pass superclass here,So if we have something like BaseActivity ,that won't work
     void inject(MainActivity mainActivity);
 
 
