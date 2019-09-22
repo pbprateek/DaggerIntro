@@ -4,11 +4,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 
-@Singleton
 public class Driver {
-
-
-    @Inject
+    //we don't own this class so we can't put @Inject,
+    //let's suppose we want Driver as a global Singeleton like an okHTTP client
     public Driver(){
 
     }
