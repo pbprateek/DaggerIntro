@@ -33,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
          */
 
 
-        ActivityComponent component = ((ExampleApplication)getApplication()).getAppComponent().
-                getActivityComponent(new DisealEngineModule(150));  //No need to call Build now
+        /*
+        ActivityComponent component = ((ExampleApplication)getApplication()).getAppComponent().getActivityComponentBuilder()
+                .engineCapacity(170).horsePower(190).build();
+
+         */
+
+        ActivityComponent component = ((ExampleApplication)getApplication()).getAppComponent().getActivityComponentFactory().create(170,150);
+
+
 
         component.inject(MainActivity.this);
         //We can't do constructor injection here bcz we don't create MainInjection

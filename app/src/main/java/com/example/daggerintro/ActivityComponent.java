@@ -23,7 +23,7 @@ import dagger.Subcomponent;
 //Parent Component without Exposing them Explictly in Parent Component
 
 @PerActivity
-@Subcomponent(modules = {WheelsModule.class,DisealEngineModule.class})
+@Subcomponent(modules = {WheelsModule.class,PetrolEngineModule.class})
 public interface ActivityComponent {
 
 
@@ -31,5 +31,35 @@ public interface ActivityComponent {
 
     //We can't pass superclass here,So if we have something like BaseActivity ,that won't work
     void inject(MainActivity mainActivity);
+
+
+    /*
+    @Subcomponent.Builder
+    interface Builder {
+
+        @BindsInstance
+        Builder horsePower(@Named("horse power") int horsePower);
+
+        @BindsInstance
+        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
+
+        //Builder appComponent(AppComponent component);//We don't need this anymore,bcz it's a subcomponent and it can
+        //directly access all the depedency graph of parent
+
+        ActivityComponent build();
+    }
+     */
+
+
+
+    //@Subcomponent.Factory -> Advantage is that it's concise and provide compile time safety as we will have to
+    //pass all the arguments,but we can't use Factory if we have to pass optional arguments
+
+
+    @Subcomponent.Factory
+    interface Factory{
+        ActivityComponent create(@BindsInstance @Named("horse power") int horsePower,
+                                 @BindsInstance @Named("engine capacity") int engineCapacity);
+    }
 
 }

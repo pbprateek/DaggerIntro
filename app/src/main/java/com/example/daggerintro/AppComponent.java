@@ -18,7 +18,20 @@ public interface AppComponent {
 
     //We will not pass WheelsModule bcz that's abstract and Dagger dosen't initilize them,
     //So we will pass all Modules which are not abstract and have public Constructor
-    ActivityComponent getActivityComponent(DisealEngineModule disealEngineModule);
 
+    //ActivityComponent getActivityComponent(DisealEngineModule disealEngineModule);
+
+
+    //ActivityComponent.Builder getActivityComponentBuilder();
+
+
+    ActivityComponent.Factory getActivityComponentFactory();
+
+
+    @Component.Factory
+    interface Factory{
+
+        AppComponent create(DriverModule driverModule);
+    }
 
 }
