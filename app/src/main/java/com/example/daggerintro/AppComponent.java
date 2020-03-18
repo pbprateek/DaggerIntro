@@ -18,6 +18,7 @@ public interface AppComponent {
 
     //We will not pass WheelsModule bcz that's abstract and Dagger dosen't initilize them,
     //So we will pass all Modules which are not abstract and have public Constructor
+    //Keep in mind that we are returning ActivityComponent,and ActivityComponent needs DisealEngineModule
     ActivityComponent getActivityComponent(DisealEngineModule disealEngineModule);
 
 
