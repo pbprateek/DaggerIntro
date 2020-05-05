@@ -14,7 +14,7 @@ import dagger.Component;
 //@Component
 
 //We also will have to annotate the Componenet with Singeleton,Even if one Class in the Component is Singeleton
-//We can also put Singelton Directly above @Bind or @Provides
+//We can also put Singelton Directly above @Bind or @Provides as well
 
 
 
