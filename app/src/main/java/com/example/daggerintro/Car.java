@@ -4,20 +4,24 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
+
+@PerActivity
 public class Car {
 
     public static final String TAG = "Car";
 
 
     private Wheels wheels;
+    private Driver driver;
     @Inject Engine engine; //Field injection but no need of any component
 
 
 //Now dagger knows how to Construct a car but for this to work it should also know the same abt Engine and Wheels
 
     @Inject
-    public Car(Wheels wheels){
+    public Car(Wheels wheels,Driver driver){
         this.wheels = wheels;
+        this.driver = driver;
     }
 
 
@@ -35,6 +39,7 @@ public class Car {
 
 
     public void drive(){
-        Log.d(TAG, "driving...");
+        engine.start();
+        Log.d(TAG, driver+" "+driver.name +" driving car "+this);
     }
 }
